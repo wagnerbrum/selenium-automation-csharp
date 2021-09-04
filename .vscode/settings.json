@@ -1,0 +1,9 @@
+{
+    "files.exclude": {
+      "**/.vs": true,
+      "**/bin": true,
+      "**/obj": true,
+    },
+    "dotnet-test-explorer.testProjectPath": "**/*test.csproj"
+  }
+  
