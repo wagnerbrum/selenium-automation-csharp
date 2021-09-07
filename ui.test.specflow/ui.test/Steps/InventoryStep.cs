@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using ui.test.Drivers;
+using ui.test.Models;
 using ui.test.Pages;
 
 namespace ui.test.Steps
@@ -10,10 +12,15 @@ namespace ui.test.Steps
     {
         public InventoryPage inventoryPage = new InventoryPage();
 
-        [Then(@"os valores dos produtos devem ser '(.+)' e '(.+)'")]
-        public void EntaoInsiroAsSeguintesInformacoesPessoais(string nomeProduto, string precoProduto)
+        [Then(@"os valores dos produtos devem ser igual aos contidos na seguinte tabela")]
+        public void EntaoInsiroAsSeguintesInformacoesPessoais(Table table)
         {
-            Assert.That(inventoryPage.getProdutoPrice(nomeProduto).Text, Is.EqualTo(precoProduto));
+            var products = table.CreateSet<InventoryProduct>();
+
+            foreach (var product in products)
+            {
+                Assert.That(inventoryPage.getProdutoPrice(product.Name).Text, Is.EqualTo(product.Price));
+            }
         }
     }
 }
