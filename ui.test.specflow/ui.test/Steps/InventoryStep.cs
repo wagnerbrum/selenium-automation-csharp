@@ -11,7 +11,7 @@ namespace ui.test.Steps
         public InventoryPage inventoryPage = new InventoryPage();
 
         [Then(@"os valores dos produtos devem ser '(.+)' e '(.+)'")]
-        public void QuandoInsiroAsSeguintesInformacoesPessoais(string nomeProduto, string precoProduto)
+        public void EntaoInsiroAsSeguintesInformacoesPessoais(string nomeProduto, string precoProduto)
         {
             Assert.That(inventoryPage.getProdutoPrice(nomeProduto).Text, Is.EqualTo(precoProduto));
         }
